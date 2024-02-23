@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour
     }
     private void Start()
     {
-        StartWave();
+        StartCoroutine(StartWave());
     }
     private void Update()
     {
@@ -44,7 +44,13 @@ public class Spawner : MonoBehaviour
             enemiesAlive ++;
             timeSinceLastSpawn = 0f;
         }
+        if(enemiesAlive == 0 && enemiesLeftToSpawn == 0)
+        {
+            EndWave();
+        }
     }
+
+    
 
     private void OnEnemyDestroyed()
     {
@@ -57,10 +63,18 @@ public class Spawner : MonoBehaviour
         Instantiate(prefabToSpawn, LevelManager.instance.startPoint.position, Quaternion.identity);
     }
 
-    private void StartWave()
+    private IEnumerator StartWave()
     {
+        yield return new WaitForSeconds(timeBetweenWaves);
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
+    }
+    private void EndWave()
+    {
+        isSpawning = false;
+        timeSinceLastSpawn = 0f;
+        StartCoroutine(StartWave());
+        currentWave++;
     }
 
     private int EnemiesPerWave()
