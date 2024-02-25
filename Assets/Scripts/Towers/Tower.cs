@@ -8,13 +8,18 @@ public class Tower : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private Transform firePoint;
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 5f;
+    [SerializeField] private float shootSpeed = 1f;
+
 
    
 
     private Transform target;
+    private float timeUntilFire;
     private void Update()
     {
         if (target == null)
@@ -22,10 +27,26 @@ public class Tower : MonoBehaviour
             FindTarget();
             return;
         }
-        if (!CheckTargetIsInRange()) ;
+        if (!CheckTargetIsInRange())
         {
             target = null;
         }
+        else
+        {
+            timeUntilFire += Time.deltaTime;
+            if(timeUntilFire >= 1f / shootSpeed)
+            {
+                Shoot();
+                timeUntilFire = 0f;
+            }
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject magicMissileObj = Instantiate(attackPrefab, firePoint.position, Quaternion.identity);
+        MagicMissile magicMissileScript = magicMissileObj.GetComponent<MagicMissile>();
+        magicMissileScript.SetTarget(target);
     }
 
     private bool CheckTargetIsInRange()
