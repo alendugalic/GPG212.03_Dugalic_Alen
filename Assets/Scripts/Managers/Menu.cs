@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour
 
     private void OnGUI()
     {
-        goldUI.text = LevelManager.instance.gold.ToString();
+        goldUI.text = ("Gold: " + LevelManager.instance.gold);
     }
 
     public void SetTower()
