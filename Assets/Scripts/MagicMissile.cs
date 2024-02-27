@@ -16,6 +16,10 @@ public class MagicMissile : MonoBehaviour
     {
         target = _target;
     }
+    private void Update()
+    {
+        Destroy(gameObject, 1);
+    }
     private void FixedUpdate()
     {
         if(!target) return;

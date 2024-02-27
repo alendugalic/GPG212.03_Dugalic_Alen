@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8008670495556901829}
-  missileSpeed: 5
-  missileDamage: 1
+  missileSpeed: 3
+  missileDamage: 2
 --- !u!50 &8008670495556901829
 Rigidbody2D:
   serializedVersion: 4

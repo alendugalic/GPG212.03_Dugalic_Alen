@@ -189,8 +189,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2072322255211392414}
-  - component: {fileID: 1029415651763250443}
   - component: {fileID: -7137435728039890027}
+  - component: {fileID: 3976484520686903549}
   m_Layer: 5
   m_Name: ArcherTower
   m_TagString: Untagged
@@ -219,28 +219,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1.555, y: -2.838}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1029415651763250443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923523527272954263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28ac21711b0ec40a0812d33a586eb7ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _version: 156
-  _spriteOBj: {fileID: 2924756221815886358}
-  EditChk: 0
-  _code: Unit000
-  _anim: {fileID: 4667879037682450690}
-  _horse: 0
-  _horseString: 
-  UnitTypeChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-7137435728039890027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,8 +236,30 @@ MonoBehaviour:
     m_Bits: 64
   attackPrefab: {fileID: 7986873652216344199, guid: eb1d73a1abca55643a852fb01272a215, type: 3}
   firePoint: {fileID: 8933228020415923117}
-  targetingRange: 5
-  shootSpeed: 2
+  targetingRange: 3
+  shootSpeed: 1
+--- !u!114 &3976484520686903549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923523527272954263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ac21711b0ec40a0812d33a586eb7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _version: 0
+  _spriteOBj: {fileID: 0}
+  EditChk: 0
+  _code: 
+  _anim: {fileID: 4667879037682450690}
+  _horse: 0
+  _horseString: 
+  UnitTypeChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &933039076311319607
 GameObject:
   m_ObjectHideFlags: 0
