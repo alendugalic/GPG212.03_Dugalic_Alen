@@ -15,10 +15,12 @@ public class Enemy : MonoBehaviour
     private Transform target; // end point
     private int pathIndex = 0;
     private bool isFacingRight;
+    private float baseSpeed;
     private void Start()
     {
         target = LevelManager.instance.path[pathIndex];
         transform.position = target.transform.position;
+        baseSpeed = moveSpeed;
 
     }
     private void Update()
@@ -68,6 +70,16 @@ public class Enemy : MonoBehaviour
         Vector3 localScale = gameObject.transform.localScale;
         localScale.x *= -1f;
         gameObject.transform.localScale = localScale;
+    }
+
+    public void UpdateSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
+
+    public void ResetSpeed()
+    {
+        moveSpeed = baseSpeed;
     }
 
 }
