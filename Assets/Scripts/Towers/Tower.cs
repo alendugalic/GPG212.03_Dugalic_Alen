@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Tower : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject attackPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject upgradeUI;
+    [SerializeField] private Button upgradeButton;
+    [SerializeField] private Button destroyTower;
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 5f;
@@ -61,6 +65,19 @@ public class Tower : MonoBehaviour
         {
             target = hits[0].transform;
         }
+    }
+
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+    }
+    public void Upgrade()
+    {
+
     }
 
     private void OnDrawGizmosSelected()
