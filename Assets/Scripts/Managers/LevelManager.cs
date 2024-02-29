@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        gold = 50;
+        gold = 80;
     }
 
     public void IncreaseGold(int amount)

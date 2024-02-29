@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Attributes Enemy")]
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private int damage = 1;
 
     private Transform target; // end point
     private int pathIndex = 0;
@@ -58,11 +59,22 @@ public class Enemy : MonoBehaviour
                 if (pathIndex == LevelManager.instance.path.Length)
                 {
                     Spawner.onEnemyDestroy.Invoke();
-                    Destroy(gameObject);
                     return; //getting to the last point
                 }
             }
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            if (collision.gameObject.CompareTag("Castle"))
+            {
+                health.TakeDamage(damage);
+            }
+        }
+        Destroy(gameObject);
     }
     private void Flip()
     {

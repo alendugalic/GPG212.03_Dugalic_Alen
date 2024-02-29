@@ -11,8 +11,6 @@ public class Tower : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject attackPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject upgradeUI;
-    [SerializeField] private Button upgradeButton;
     [SerializeField] private Button destroyTower;
 
     [Header("Attributes")]
@@ -65,19 +63,6 @@ public class Tower : MonoBehaviour
         {
             target = hits[0].transform;
         }
-    }
-
-    public void OpenUpgradeUI()
-    {
-        upgradeUI.SetActive(true);
-    }
-    public void CloseUpgradeUI()
-    {
-        upgradeUI.SetActive(false);
-    }
-    public void Upgrade()
-    {
-
     }
 
     private void OnDrawGizmosSelected()

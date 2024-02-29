@@ -7,8 +7,6 @@ public class BuildManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private TowerMain[] towerPrefabs;
 
-    //[Header("Attributes")]
-
     private int selectedTower = 0;
 
     public static BuildManager Instance;

@@ -9,9 +9,6 @@ public class MagicSlow : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private GameObject attackPrefab;
-    [SerializeField] private GameObject upgradeUI;
-    [SerializeField] private Button upgradeButton;
     [SerializeField] private Button destroyTower;
 
     [Header("Attributes")]
@@ -53,16 +50,6 @@ public class MagicSlow : MonoBehaviour
 
         em.ResetSpeed();
     }
-
-    public void OpenUpgradeUI()
-    {
-        upgradeUI.SetActive(true);
-    }
-    public void CloseUpgradeUI()
-    {
-        upgradeUI.SetActive(false);
-    }
-
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.cyan;

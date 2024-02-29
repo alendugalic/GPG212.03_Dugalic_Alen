@@ -9,7 +9,7 @@ public class Plot : MonoBehaviour
     [SerializeField] private Color hoverColor;
 
     public GameObject towerObject;
-    public Tower tower;
+   
     private Color startColor;
 
     private void Start()
@@ -23,28 +23,56 @@ public class Plot : MonoBehaviour
 
     void OnMouseExit()
     {
-        sr.color = startColor;
+        sr.color = startColor;  
     }
     private void OnMouseDown()
     {
-        if (UIManager.Instance.IsHoveringUI()) return;
-     
+        
+
         if (towerObject != null)
         {
-            tower.OpenUpgradeUI();
-            return;
-        }
+            UpgradeTower();
 
-       TowerMain towerToBuild = BuildManager.Instance.GetSelectedTower();
+        }
+        else
+        {
+            BuildNewTower();
+        }
+    }
+
+    private void UpgradeTower()
+    {
+        TowerMain towerToBuild = BuildManager.Instance.GetSelectedTower();
 
         if (towerToBuild.cost > LevelManager.instance.gold)
         {
+            // Not enough gold to upgrade.
             return;
         }
+
         LevelManager.instance.SpendGold(towerToBuild.cost);
 
+        // Destroy the existing tower and instantiate the upgraded one.
+        Destroy(towerObject);
         towerObject = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
-        tower = towerObject.GetComponent<Tower>();
+       
     }
-    
+
+    private void BuildNewTower()
+    {
+        TowerMain towerToBuild = BuildManager.Instance.GetSelectedTower();
+
+        if (towerToBuild.cost > LevelManager.instance.gold)
+        {
+            // Not enough gold to build.
+            return;
+        }
+
+        LevelManager.instance.SpendGold(towerToBuild.cost);
+
+        // Instantiate the new tower.
+        towerObject = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+       
+    }
+
 }
